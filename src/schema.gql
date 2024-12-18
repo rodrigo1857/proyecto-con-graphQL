@@ -3,5 +3,8 @@
 # ------------------------------------------------------
 
 type Query {
-  helloWorld: String!
+  """hola mundo es lo que retoorna"""
+  hello: String!
+  randomNumber: Float!
+  randomFromZeroTo: Int!
 }
