@@ -6,5 +6,9 @@ type Query {
   """hola mundo es lo que retoorna"""
   hello: String!
   randomNumber: Float!
-  randomFromZeroTo: Int!
+
+  """
+  retorna un numero aleatorio entre 0 y el numero que se le pase como parametro
+  """
+  randomFromZeroTo(to: Int): Int!
 }
