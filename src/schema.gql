@@ -18,4 +18,5 @@ type Query {
   """
   randomFromZeroTo(to: Int): Int!
   todos: [Todo!]!
+  todo(id: Int!): Todo!
 }
