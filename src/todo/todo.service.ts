@@ -28,15 +28,16 @@ export class TodoService {
         this.todos.push(todo);
         return todo;
     }
-    update(updateTodo:UpdateTodoInput){
-        const{ id, description, done } = updateTodo;
+    update(updateTodoInput:UpdateTodoInput){
+        const{ id, description, done } = updateTodoInput;
        const todoToUpdate = this.findOne(id);
        if(description) todoToUpdate.description = description;
-       if(done) todoToUpdate.done = done;
+       if(done!== undefined) todoToUpdate.done = done;
        this.todos= this.todos.map(todo=>{
         return (todo.id === id) ? todoToUpdate : todo
        }
      );
+     return todoToUpdate;
     }
 
 

@@ -30,9 +30,9 @@ export class TodoResolver {
 
     @Mutation(()=>Todo,{name:'updateTodo'})
     updateTodo(
-        @Args('createTodoInput') updateTodo: UpdateTodoInput
+        @Args('updateTodoInput') updateTodoInput: UpdateTodoInput
     ){
-         return this.todoService.update(updateTodo);
+         return this.todoService.update(updateTodoInput);
     }
     removeTodo(){
 
