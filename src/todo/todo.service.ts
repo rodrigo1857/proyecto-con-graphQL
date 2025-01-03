@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Todo } from './entity/todo.entity';
 import { CreateTodoInput } from './dto/inputs/create-todo.input';
+import { UpdateTodoInput } from './dto/inputs/update-todo.input';
 
 @Injectable()
 export class TodoService {
@@ -27,4 +28,16 @@ export class TodoService {
         this.todos.push(todo);
         return todo;
     }
+    update(updateTodo:UpdateTodoInput){
+        const{ id, description, done } = updateTodo;
+       const todoToUpdate = this.findOne(id);
+       if(description) todoToUpdate.description = description;
+       if(done) todoToUpdate.done = done;
+       this.todos= this.todos.map(todo=>{
+        return (todo.id === id) ? todoToUpdate : todo
+       }
+     );
+    }
+
+
 }
