@@ -1,5 +1,5 @@
 import { Field, InputType, Int } from "@nestjs/graphql";
-import { IsNotEmpty, IsString, MaxLength } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsOptional, IsString, MaxLength } from "class-validator";
 
 @InputType()
 export class UpdateTodoInput {
@@ -8,9 +8,11 @@ export class UpdateTodoInput {
     @IsString()
     @IsNotEmpty()
     @MaxLength(30)
+    @IsOptional()
     description?: string;
 
     @Field(()=>Boolean, {nullable: true })
+    @IsBoolean()
     done?: boolean;
 
     @Field(()=>Int)
