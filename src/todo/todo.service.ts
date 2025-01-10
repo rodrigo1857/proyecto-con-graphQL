@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Todo } from './entity/todo.entity';
 import { CreateTodoInput } from './dto/inputs/create-todo.input';
 import { UpdateTodoInput } from './dto/inputs/update-todo.input';
+import { StatusArgs } from './dto/args/status.args';
 
 @Injectable()
 export class TodoService {
@@ -11,7 +12,11 @@ export class TodoService {
         {id:2,description:'Comprar leche',done:false},
         {id:3,description:'Comprar huevos',done:false},
     ];
-    findAll():Todo[]{
+    findAll(statusArgs:StatusArgs):Todo[]{
+        const {status} = statusArgs;
+        if(status !== undefined){
+            return this.todos.filter(todo => todo.done === status);
+        }
         return this.todos;
     }
     findOne(id:number):Todo{

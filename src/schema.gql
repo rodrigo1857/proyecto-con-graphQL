@@ -17,7 +17,7 @@ type Query {
   retorna un numero aleatorio entre 0 y el numero que se le pase como parametro
   """
   randomFromZeroTo(to: Int): Int!
-  todos: [Todo!]!
+  todos(status: Boolean): [Todo!]!
   todo(id: Int!): Todo!
 }
 
