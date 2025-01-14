@@ -12,6 +12,19 @@ export class TodoService {
         {id:2,description:'Comprar leche',done:false},
         {id:3,description:'Comprar huevos',done:false},
     ];
+
+    get totalTodos(){
+        return this.todos.length;
+    }
+
+    get pendingTodos(){
+        return this.todos.filter(todo=>!todo.done).length;
+    }
+
+    get completeTodos(){
+        return this.todos.filter(todo=>todo.done).length;
+    }
+
     findAll(statusArgs:StatusArgs):Todo[]{
         const {status} = statusArgs;
         if(status !== undefined){
@@ -19,6 +32,7 @@ export class TodoService {
         }
         return this.todos;
     }
+
     findOne(id:number):Todo{
         const todo =  this.todos.find(todo=>todo.id===id);
         if(!todo){
@@ -50,6 +64,8 @@ export class TodoService {
         this.todos = this.todos.filter(todo=>todo.id !== id);
         return true;
     }
+
+   
 
 
 }
